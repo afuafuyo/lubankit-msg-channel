@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<section>
+    <h4>Iframe Page</h4>
+    <div id="content"></div>
+</section>
+
+<script src="../dist/dom.es.js"></script>
+<script type="module">
+// import Dom from '../dist/dom.es.js';
+let dom = t;
+
+dom.listen('hello', (data, res) => {
+    const msg = 'data from parent: ' + JSON.stringify(data);
+    document.querySelector('#content').innerHTML = msg;
+    res('ffffffff');
+});
+</script>
+</body>
+</html>

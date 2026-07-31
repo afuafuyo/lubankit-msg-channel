@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<section>
+    <fieldset>
+        <legend>Iframe</legend>
+        <div>
+            <iframe id="iframe" src="./iframe.html" width="400" height="100"></iframe>
+        </div>
+    </fieldset>
+    
+    <fieldset>
+        <legend>Main Page</legend>
+        <div>
+            <textarea id="msg" rows="4" cols="60"></textarea>
+            <button id="btn">发送消息</button>
+        </div>
+    </fieldset>
+</section>
+
+<script src="../dist/dom.es.js"></script>
+<script type="module">
+// import dom from '../dist/dom.es.js';
+let dom = t;
+
+document.querySelector('#btn').addEventListener('click', () => {
+    const msg = document.querySelector('#msg').value;
+    dom.sendMessageToOtherWindow(document.querySelector('#iframe').contentWindow, {
+        type: 'hello',
+        data: msg,
+    }, (data) => {
+        console.log('data from iframe: ', data);
+    });
+});
+</script>
+</body>
+</html>
