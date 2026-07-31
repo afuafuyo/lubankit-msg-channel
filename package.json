@@ -1,15 +1,6 @@
 {
   "name": "@lubankit/msg-channel",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
-  "scripts": {
-    "build": "rollup --config"
-  },
-  "files": [
-    "content.js",
-    "dom.js",
-    "service.js",
-    "extension-dom.js"
-  ],
   "license": "Apache-2.0"
 }
