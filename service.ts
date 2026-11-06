@@ -1,4 +1,4 @@
-import type { Message, Processor } from './types';
+import type { Callback, Message, Processor } from './types';
 
 /**
  * Service Script
@@ -22,14 +22,12 @@ export default class MessageChannelService {
     /**
      * Listener entry
      */
-    private static runtimeEntry(message: Message, _sender: any, sendResponse: any): boolean {
+    private static runtimeEntry(message: Message, _sender: any, sendResponse: Callback): boolean {
         // Search for the processor
         const processor = MessageChannelService.processors[message.type];
         if(processor !== undefined) {
-            // processor(message, (res: any) => {
-            //     sendResponse(res);
-            // });
             processor(message, sendResponse);
+            // Keep the message channel open for asynchronous response
             return true;
         }
 
